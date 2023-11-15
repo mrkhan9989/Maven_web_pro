@@ -1,11 +1,9 @@
 pipeline {
 agent any 
      stages{
-       stage("add") {
+       stage("build") {
           steps {
-           n1 = 25
-           n2 = 28
-            echo "$n1+$n2"
+            echo "build success"
           }
        }
      }
