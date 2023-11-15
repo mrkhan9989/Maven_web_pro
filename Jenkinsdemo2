@@ -4,10 +4,10 @@ agent any
        stage("build") {
           steps {
             script {
-             num1 = 5
-             num = 6
-              sum = num1 + num2
-              echo "$sum"
+            def num1 = 5
+            def num = 6
+             def sum = num1 + num2
+              echo "${sum}"
                 }
           }
        }
