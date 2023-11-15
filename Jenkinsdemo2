@@ -3,10 +3,12 @@ agent any
      stages{
        stage("build") {
           steps {
-            num1 = '25'
-            num2 = '33'
-          add = $num1+$num2
-          echo "${add}"
+            script {
+             num1 = 5
+             num = 6
+              sum = num1 + num2
+              echo "${sum}"
+                }
           }
        }
      }
