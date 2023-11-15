@@ -3,7 +3,10 @@ agent any
      stages{
        stage("build") {
           steps {
-            echo "build success"
+            num1 = 25
+            num2 = 33
+          add = ($num1+$num2)
+          echo "$add"
           }
        }
      }
