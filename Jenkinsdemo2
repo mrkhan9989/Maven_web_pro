@@ -1,0 +1,12 @@
+pipeline {
+agent any 
+     stages{
+       stage("add") {
+          steps {
+           n1 = 25
+           n2 = 28
+            echo "$n1+$n2"
+          }
+       }
+     }
+}
