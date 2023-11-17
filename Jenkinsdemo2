@@ -1,15 +1,25 @@
-pipeline {
-agent any 
-     stages{
-       stage("build") {
-          steps {
-            script {
-            def num1 = 5
-            def num = 6
-             def sum = num1 + num2
-              echo "${sum}"
-                }
-          }
-       }
-     }
+pipeline{
+    agent any 
+    environment{
+        PATH="/opt/maven/bin:$PATH"
+    }
+    stages{
+        stage("git clone"){
+            steps{
+                git credentialsId: '097e7674-4d58-4cf6-90eb-0ccf014139aa', url: 'https://github.com/mrkhan9989/Maven_web_pro.git'
+            }
+        }
+        stage("maven goals"){
+            steps{
+                sh 'mvn clean package'
+            }
+        }
+        stage("deploy"){
+            steps{
+                deploy adapters: [tomcat9(credentialsId: '45dc9077-a2de-4a9a-ad7a-caa98d0a8d40', path: '', url: 'http://192.168.47.131:8088')], contextPath: 'tomcat_pro1', war: '**/*.war'
+            }
+        }
+     
+        
+    }
 }
